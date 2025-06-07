@@ -1,0 +1,232 @@
+:root {
+  --red-hsl: hsl(0, 100%, 74%);
+  --red: 0, 100%, 74%;
+  --green-hsl: hsl(154, 59%, 51%);
+  --green: 154, 59%, 51%;
+  --blue-hsl: hsl(248, 32%, 49%);
+  --blue: 248, 32%, 49%;
+  --dark-blue-hsl: hsl(249, 10%, 26%);
+  --dark-blue: 249, 10%, 26%;
+  --gray-blue-hsl: hsl(246, 25%, 77%);
+  --gray-blue: 246, 25%, 77%;
+  --fs: 1rem;
+  --fs-100: 0.6875rem;
+  --fs-200: 0.875rem;
+  --fs-300: 0.9375rem;
+  --ff: "Poppins", sans-serif;
+  --fw-1: 400;
+  --fw-2: 500;
+  --fw-3: 600;
+  --fw-4: 700;
+  --padding: 1.5rem;
+  --radius-1: 0.25rem;
+  --radius-2: 0.5rem;
+  --box-shadow: 0 8px hsla(0, 0%, 0%, .1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+input,
+button {
+  border: 0;
+  font: inherit;
+  font-weight: var(--fw-2);
+  border-radius: var(--radius-1);
+  padding: 1em;
+  height: 3.5rem;
+}
+
+body {
+  font-size: var(--fs);
+  font-family: var(--ff);
+  min-height: 100vh;
+  background-color: var(--red-hsl);
+  background-image: url(./images/bg-intro-mobile.png);
+  color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  place-items: center;
+  align-items: start;
+  text-align: center;
+  line-height: 1.6;
+  padding-block: 4rem;
+}
+
+.grid {
+  display: grid;
+  gap: var(--padding);
+  align-items: start;
+}
+
+.container {
+  width: min(86%, 70rem);
+}
+
+.intro {
+  margin-block: 2.25rem;
+}
+
+.price {
+  padding-block: 1.125em;
+  padding-inline: min(20%, 5em);
+  background-color: var(--blue-hsl);
+  border-radius: var(--radius-2);
+  box-shadow: var(--box-shadow);
+
+  & span {
+    font-weight: var(--fw-3);
+  }
+}
+
+h1 {
+  line-height: 1.2;
+  font-size: clamp(1.75rem, 0.3rem + 5vw, 3rem);
+}
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+form {
+  background-color: white;
+  border-radius: var(--radius-2);
+  padding: var(--padding);
+  gap: 1em;
+  box-shadow: var(--box-shadow);
+
+  &>.form-group {
+    position: relative;
+
+    &>label {
+      color: var(--dark-blue-hsl);
+    }
+
+    &>input {
+      text-overflow: ellipsis;
+      border: 2px solid hsla(var(--dark-blue), .2);
+      width: 100%;
+
+      &::placeholder {
+        font-size: var(--fs-200);
+        font-weight: var(--fw-4);
+      }
+
+      &:focus::placeholder {
+        color: transparent;
+      }
+    }
+
+    &.has-error input::placeholder {
+      color: var(--red-hsl);
+      color: transparent;
+    }
+
+    &.has-error input {
+      border-color: var(--red-hsl);
+      padding-inline-end: 3.5em;
+      color: var(--red-hsl);
+    }
+
+    &.has-error input:focus {
+      color: var(--dark-blue-hsl);
+      border-color: var(--dark-blue);
+    }
+  }
+
+  .error-icon {
+    position: absolute;
+    right: 1.5em;
+    top: 16px;
+    width: 24px;
+    opacity: 0;
+  }
+
+  .has-error .error-icon {
+    opacity: 1;
+  }
+
+  .error-text {
+    height: 0;
+    visibility: hidden;
+  }
+
+  .has-error .error-text {
+    visibility: visible;
+    height: auto;
+    font-style: italic;
+    color: var(--red-hsl);
+    text-align: end;
+    font-size: var(--fs-100);
+    font-weight: var(--fw-2);
+    padding-block-start: 0.5em;
+
+  }
+
+  &>button {
+    cursor: pointer;
+    font-size: var(--fs-300);
+    --border-green-hsl: hsl(154, 59%, 45%);
+    background-color: var(--green-hsl);
+    color: white;
+    text-transform: uppercase;
+    border: 0;
+    border-bottom: 4px solid var(--border-green-hsl);
+    letter-spacing: 1px;
+
+    &:is(:hover, :focus-visible) {
+      opacity: 0.8;
+    }
+  }
+
+  &>.terms {
+    font-weight: var(--fw-2);
+    line-height: 1.7;
+    padding-inline: 1.5em;
+    font-size: var(--fs-100);
+    color: var(--gray-blue-hsl);
+    margin-block-start: -0.5em;
+
+    &>a {
+      text-decoration: none;
+      color: var(--red-hsl);
+      font-weight: var(--fw-4);
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  body {
+    align-content: center;
+  }
+
+  .container {
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  form {
+    padding: 2.5em;
+    gap: 1.25em;
+
+    & input {
+      padding-inline: 1.75em;
+    }
+  }
+
+  .intro {
+    text-align: start;
+  }
+}
