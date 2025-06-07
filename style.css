@@ -45,8 +45,8 @@ body {
   font-size: var(--fs);
   font-family: var(--ff);
   min-height: 100vh;
+  background: url(./images/bg-intro-mobile.png);
   background-color: var(--red-hsl);
-  background-image: url(./images/bg-intro-mobile.png);
   color: white;
   background-repeat: no-repeat;
   background-size: cover;
@@ -210,6 +210,8 @@ form {
 @media (min-width: 900px) {
   body {
     align-content: center;
+    background: url(./images/bg-intro-desktop.png);
+    background-color: var(--red-hsl);
   }
 
   .container {
